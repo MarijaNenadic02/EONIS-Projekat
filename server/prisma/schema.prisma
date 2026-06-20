@@ -1,0 +1,119 @@
+// Prisma schema — code-first data model for the Essence parfume shop.
+// SQLite is used for zero-install local development.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// NOTE: SQLite does not support native enums. The following fields use String
+// with documented allowed values, enforced by Zod validation in the API layer:
+//   User.role     -> "ADMIN" | "CUSTOMER"
+//   Product.gender-> "MALE" | "FEMALE" | "UNISEX"
+//   Order.status  -> "PENDING" | "PAID" | "SHIPPED" | "CANCELLED"
+
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  role         String     @default("CUSTOMER")
+  createdAt    DateTime   @default(now())
+
+  cartItems    CartItem[]
+  orders       Order[]
+}
+
+model Brand {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+
+  products  Product[]
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+
+  products  Product[]
+}
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int         @default(0)
+  volumeMl    Int
+  gender      String      @default("UNISEX")
+  imageUrl    String
+  createdAt   DateTime    @default(now())
+
+  brandId     Int
+  brand       Brand       @relation(fields: [brandId], references: [id])
+  categoryId  Int
+  category    Category    @relation(fields: [categoryId], references: [id])
+
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+}
+
+// Associative class: User <-> Product (shopping cart)
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  quantity  Int      @default(1)
+
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+}
+
+model Order {
+  id              Int         @id @default(autoincrement())
+  status          String      @default("PENDING")
+  total           Float
+  stripeSessionId String?
+  createdAt       DateTime    @default(now())
+
+  userId          Int
+  user            User        @relation(fields: [userId], references: [id])
+
+  items           OrderItem[]
+  payment         Payment?
+}
+
+// Associative class: Order <-> Product (order line)
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  unitPrice Float
+
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+// Recorded by the Stripe webhook on successful payment
+model Payment {
+  id                  Int      @id @default(autoincrement())
+  stripeEventId       String   @unique
+  stripePaymentIntent String?
+  amount              Float
+  currency            String   @default("usd")
+  status              String
+  createdAt           DateTime @default(now())
+
+  orderId             Int      @unique
+  order               Order    @relation(fields: [orderId], references: [id])
+}
