@@ -67,6 +67,13 @@ export function errorHandler(err, _req, res, _next) {
   if (err.code === "P2025") {
     return res.status(404).json({ error: "Record not found" });
   }
+  // Prisma foreign key constraint violation (e.g. invalid brand/category id,
+  // or deleting a record still referenced by others)
+  if (err.code === "P2003") {
+    return res.status(400).json({
+      error: "Operation failed due to a related record (invalid or in use)",
+    });
+  }
   console.error(err);
   res.status(500).json({ error: "Internal server error" });
 }

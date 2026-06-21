@@ -31,8 +31,11 @@ export default function AdminProducts() {
   const { data } = useQuery({
     queryKey: ["products", { page, q: search, admin: true }],
     queryFn: async () =>
-      (await api.get("/products", { params: { page, pageSize: 8, q: search } }))
-        .data,
+      (
+        await api.get("/products", {
+          params: { page, pageSize: 8, q: search, sort: "createdAt", order: "desc" },
+        })
+      ).data,
   });
   const { data: brands } = useQuery({
     queryKey: ["brands"],
