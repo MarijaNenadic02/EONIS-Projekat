@@ -35,7 +35,7 @@ router.get(
   })
 );
 
-// POST /api/cart — add to cart (business rule: cannot exceed stock)
+// POST /api/cart: add to cart (business rule: cannot exceed stock)
 router.post(
   "/",
   validate(addSchema),
@@ -66,7 +66,7 @@ router.post(
   })
 );
 
-// PUT /api/cart/:id — set quantity (business rule: cannot exceed stock)
+// PUT /api/cart/:id: set quantity (business rule: cannot exceed stock)
 router.put(
   "/:id",
   validate(updateSchema),

@@ -39,7 +39,7 @@ const productBodySchema = z.object({
 
 const SORTABLE = ["name", "price", "createdAt", "stock"];
 
-// GET /api/products — public list with pagination, sorting, search, filters
+// GET /api/products: public list with pagination, sorting, search, filters
 router.get(
   "/",
   validate(productQuerySchema, "query"),

@@ -3,39 +3,78 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-cream text-ink font-sans;
+    @apply bg-cream text-ink font-sans antialiased;
+    /* warm radial wash so the cream isn't a dead flat fill */
+    background-image: radial-gradient(
+      120% 80% at 50% -10%,
+      #fbf7f0 0%,
+      #f6f1ea 45%,
+      #efe7da 100%
+    );
+    background-attachment: fixed;
   }
   h1,
   h2,
   h3 {
-    @apply font-serif;
+    @apply font-serif tracking-tight;
+  }
+  /* tabular figures everywhere numbers matter (prices, tables) */
+  table,
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold/60 ring-offset-2 ring-offset-cream;
+  }
+  ::selection {
+    @apply bg-gold/25;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium tracking-wide transition duration-200 ease-luxe disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.97];
   }
   .btn-primary {
-    @apply btn bg-ink text-cream hover:bg-black;
+    @apply btn bg-ink text-cream shadow-soft hover:bg-ink-soft hover:shadow-lift;
   }
   .btn-gold {
-    @apply btn bg-gold text-white hover:brightness-110;
+    @apply btn bg-gold text-paper shadow-soft hover:bg-gold-deep hover:shadow-gold;
   }
   .btn-outline {
-    @apply btn border border-ink/30 hover:bg-ink/5;
+    @apply btn border border-ink/20 bg-transparent text-ink hover:border-ink/40 hover:bg-ink/[0.04];
   }
   .input {
-    @apply w-full rounded-md border border-ink/20 bg-white px-3 py-2 text-sm outline-none focus:border-gold focus:ring-1 focus:ring-gold;
+    @apply w-full rounded-lg border border-ink/15 bg-paper px-3.5 py-2.5 text-sm text-ink shadow-sm outline-none transition placeholder:text-ink-muted/60 focus:border-gold focus:ring-2 focus:ring-gold/30;
   }
   .label {
-    @apply mb-1 block text-sm font-medium text-ink/80;
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wide text-ink-muted;
   }
   .card {
-    @apply rounded-lg border border-ink/10 bg-white shadow-sm;
+    @apply rounded-xl border border-ink/[0.07] bg-paper shadow-soft;
   }
   .field-error {
-    @apply mt-1 text-xs text-red-600;
+    @apply mt-1 text-xs text-red-700/90;
+  }
+  /* small caps eyebrow label */
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-luxe text-gold;
+  }
+}
+
+@layer utilities {
+  /* fixed grain overlay to break digital flatness */
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

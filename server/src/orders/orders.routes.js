@@ -19,7 +19,7 @@ const orderInclude = {
   payment: true,
 };
 
-// GET /api/orders — own orders; admins can pass ?all=true for every order
+// GET /api/orders: own orders; admins can pass ?all=true for every order
 router.get(
   "/",
   validate(listQuerySchema, "query"),
@@ -42,7 +42,7 @@ router.get(
   })
 );
 
-// GET /api/orders/:id — owner or admin
+// GET /api/orders/:id: owner or admin
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {

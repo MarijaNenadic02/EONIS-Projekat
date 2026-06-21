@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const BRANDS = ["Dior", "Chanel", "Tom Ford", "Versace", "Yves Saint Laurent", "Creed"];
 const CATEGORIES = ["Eau de Parfum", "Eau de Toilette", "Parfum", "Cologne"];
 
-// img helper — uses Unsplash perfume photos
+// img helper: uses Unsplash perfume photos
 const img = (id) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=80`;
 
@@ -19,14 +19,14 @@ const PRODUCTS = [
   { name: "Oud Wood", brand: "Tom Ford", category: "Eau de Parfum", price: 250.0, stock: 6, volumeMl: 50, gender: "UNISEX", img: "1615634260167-c8cdede054de" },
   { name: "Eros", brand: "Versace", category: "Eau de Toilette", price: 78.0, stock: 30, volumeMl: 100, gender: "MALE", img: "1610461888750-10bfc601b874" },
   { name: "Bright Crystal", brand: "Versace", category: "Eau de Toilette", price: 72.0, stock: 22, volumeMl: 90, gender: "FEMALE", img: "1557170334-a9632e77c6e4" },
-  { name: "Black Opium", brand: "Yves Saint Laurent", category: "Eau de Parfum", price: 115.0, stock: 16, volumeMl: 90, gender: "FEMALE", img: "1606025391022-2b7b1b8c7d3a" },
+  { name: "Black Opium", brand: "Yves Saint Laurent", category: "Eau de Parfum", price: 115.0, stock: 16, volumeMl: 90, gender: "FEMALE", img: "1615634260167-c8cdede054de" },
   { name: "Y", brand: "Yves Saint Laurent", category: "Eau de Parfum", price: 98.0, stock: 19, volumeMl: 100, gender: "MALE", img: "1547887538-e3a2f32cb1cc" },
   { name: "Aventus", brand: "Creed", category: "Eau de Parfum", price: 395.0, stock: 5, volumeMl: 100, gender: "MALE", img: "1592914610354-fd354ea45e48" },
   { name: "Silver Mountain Water", brand: "Creed", category: "Eau de Parfum", price: 320.0, stock: 7, volumeMl: 100, gender: "UNISEX", img: "1563170351-be82bc888aa4" },
 ];
 
 const description = (p) =>
-  `${p.name} by ${p.brand} — a ${p.category.toLowerCase()} for ${p.gender.toLowerCase()}. A refined ${p.volumeMl}ml fragrance with a distinctive, long-lasting signature.`;
+  `${p.name} by ${p.brand}, a ${p.category.toLowerCase()} for ${p.gender.toLowerCase()}. A refined ${p.volumeMl}ml fragrance with a distinctive, long-lasting signature.`;
 
 async function main() {
   console.log("Seeding database...");

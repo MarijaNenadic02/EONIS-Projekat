@@ -1,4 +1,4 @@
-# Essence — Parfumerija (Web prodavnica)
+# Essence: Parfumerija (Web prodavnica)
 
 Full-stack web shop for selling perfumes, built for the **EONIS 2026** project
 specification. Node.js + Express + Prisma (SQLite, code-first) backend and a
@@ -80,10 +80,10 @@ requires Stripe.
 
 ## How the spec is satisfied
 
-- **Zadatak II** — code-first data model (`server/prisma/schema.prisma`) with
+- **Zadatak II**: code-first data model (`server/prisma/schema.prisma`) with
   core tables (product, user, admin-as-role, order) plus associative classes
   (CartItem, OrderItem) and Payment. Business logic in code.
-- **Zadatak III** — CRUD per table, exception handling, search, auth & two
+- **Zadatak III**: CRUD per table, exception handling, search, auth & two
   roles (`server/src`).
-- **Zadatak IV** — React frontend with validation, login, pagination, sorting,
+- **Zadatak IV**: React frontend with validation, login, pagination, sorting,
   search, and Stripe payments with webhook → admin transactions (`client/src`).

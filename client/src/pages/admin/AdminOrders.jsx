@@ -59,7 +59,7 @@ export default function AdminOrders() {
             <ul className="mt-2 text-sm text-ink/70">
               {o.items.map((it) => (
                 <li key={it.id}>
-                  {it.product.name} × {it.quantity} — {money(it.unitPrice * it.quantity)}
+                  {it.product.name} × {it.quantity} · {money(it.unitPrice * it.quantity)}
                 </li>
               ))}
             </ul>

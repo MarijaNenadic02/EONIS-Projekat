@@ -8,7 +8,7 @@ import { validate } from "../middleware.js";
 
 const router = Router();
 
-// POST /api/checkout/create-session — turn the cart into a PENDING order and
+// POST /api/checkout/create-session: turn the cart into a PENDING order and
 // return a Stripe Checkout URL. Business rule: validate stock before paying.
 router.post(
   "/create-session",
@@ -80,7 +80,7 @@ router.post(
   })
 );
 
-// GET /api/checkout/payments (admin) — transaction list for the admin panel
+// GET /api/checkout/payments (admin): transaction list for the admin panel
 router.get(
   "/payments",
   authenticate,

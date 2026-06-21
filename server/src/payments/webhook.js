@@ -30,7 +30,7 @@ export async function handleWebhook(req, res) {
 }
 
 // Idempotent fulfillment: mark order PAID, decrement stock, record payment,
-// and clear the buyer's cart — all in one transaction.
+// and clear the buyer's cart: all in one transaction.
 async function fulfillOrder(eventId, session, orderId) {
   // Skip if this event was already processed.
   const already = await prisma.payment.findUnique({

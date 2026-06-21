@@ -11,7 +11,7 @@ import {
 const router = Router();
 const bodySchema = z.object({ name: z.string().min(1) });
 
-// GET /api/brands — public
+// GET /api/brands: public
 router.get(
   "/",
   asyncHandler(async (_req, res) => {

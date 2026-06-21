@@ -44,7 +44,7 @@ export const validate =
     next();
   };
 
-// Central error handler — last middleware in the chain.
+// Central error handler: last middleware in the chain.
 export function errorHandler(err, _req, res, _next) {
   if (err instanceof ApiError) {
     return res.status(err.status).json({

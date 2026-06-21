@@ -46,7 +46,7 @@ const updateSchema = z.object({
 
 const SORTABLE = ["email", "firstName", "lastName", "createdAt", "role"];
 
-// GET /api/users — pagination + search
+// GET /api/users: pagination + search
 router.get(
   "/",
   validate(listQuerySchema, "query"),
