@@ -46,8 +46,8 @@ async function main() {
     data: {
       email: "admin@essence.test",
       passwordHash: await bcrypt.hash("admin123", 10),
-      firstName: "Admin",
-      lastName: "User",
+      firstName: "Marko",
+      lastName: "Petrovic",
       role: "ADMIN",
     },
   });

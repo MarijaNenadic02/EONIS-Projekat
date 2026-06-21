@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { api, apiError } from "../../api/client.js";
+import { api, apiError, uploadImage } from "../../api/client.js";
 import { money } from "../../lib/format.js";
 import Modal from "../../components/Modal.jsx";
 import Pagination from "../../components/Pagination.jsx";
@@ -154,6 +154,8 @@ function ProductForm({ product, brands, categories, error, setError, onClose, on
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
@@ -171,6 +173,24 @@ function ProductForm({ product, brands, categories, error, setError, onClose, on
         }
       : { gender: "UNISEX" },
   });
+
+  const [uploading, setUploading] = useState(false);
+  const imageUrl = watch("imageUrl");
+
+  const handleFile = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setError("");
+    setUploading(true);
+    try {
+      const url = await uploadImage(file);
+      setValue("imageUrl", url, { shouldValidate: true });
+    } catch (err) {
+      setError(apiError(err));
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const onSubmit = async (values) => {
     setError("");
@@ -254,9 +274,43 @@ function ProductForm({ product, brands, categories, error, setError, onClose, on
           </div>
         </div>
         <div>
-          <label className="label">Image URL</label>
-          <input className="input" {...register("imageUrl")} />
-          <Err name="imageUrl" />
+          <label className="label">Product image</label>
+          <div className="flex items-start gap-4">
+            <div className="h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-ink/10 bg-cream-deep">
+              {imageUrl ? (
+                <img
+                  src={imageUrl}
+                  alt="Product preview"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-center text-[10px] text-ink-muted">
+                  No image
+                </div>
+              )}
+            </div>
+            <div className="flex-1 space-y-2">
+              <label className="btn-outline cursor-pointer">
+                {uploading ? "Uploading…" : "Upload image"}
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFile}
+                  disabled={uploading}
+                />
+              </label>
+              <p className="text-xs text-ink-muted">
+                JPG, PNG, WEBP or GIF up to 5 MB. Or paste an image URL below.
+              </p>
+              <input
+                className="input"
+                placeholder="https://…"
+                {...register("imageUrl")}
+              />
+              <Err name="imageUrl" />
+            </div>
+          </div>
         </div>
         <div className="flex justify-end gap-2 pt-2">
           <button type="button" className="btn-outline" onClick={onClose}>

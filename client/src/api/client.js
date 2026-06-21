@@ -11,6 +11,16 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Uploads an image file and returns its public URL.
+export async function uploadImage(file) {
+  const form = new FormData();
+  form.append("image", file);
+  const res = await api.post("/uploads", form, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+  return res.data.url;
+}
+
 // Normalize backend error messages for display.
 export function apiError(err) {
   return (

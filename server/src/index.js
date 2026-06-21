@@ -4,6 +4,7 @@ import cors from "cors";
 
 import { errorHandler } from "./middleware.js";
 import { handleWebhook } from "./payments/webhook.js";
+import uploadRoutes, { UPLOAD_DIR } from "./uploads/uploads.routes.js";
 
 import authRoutes from "./auth/auth.routes.js";
 import productRoutes from "./products/products.routes.js";
@@ -28,6 +29,9 @@ app.post(
 
 app.use(express.json());
 
+// Serve uploaded product images statically
+app.use("/uploads", express.static(UPLOAD_DIR));
+
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
 
 app.use("/api/auth", authRoutes);
@@ -38,6 +42,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/checkout", checkoutRoutes);
+app.use("/api/uploads", uploadRoutes);
 
 // Unknown route → 404 JSON
 app.use((_req, res) => res.status(404).json({ error: "Not found" }));

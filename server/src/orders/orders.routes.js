@@ -19,10 +19,16 @@ const orderInclude = {
   payment: true,
 };
 
+// Extend the shared list schema so the `all` flag survives validation
+// (Zod strips unknown keys, which previously dropped ?all=true).
+const orderListQuerySchema = listQuerySchema.extend({
+  all: z.enum(["true", "false"]).optional(),
+});
+
 // GET /api/orders: own orders; admins can pass ?all=true for every order
 router.get(
   "/",
-  validate(listQuerySchema, "query"),
+  validate(orderListQuerySchema, "query"),
   asyncHandler(async (req, res) => {
     const { page, pageSize } = req.query;
     const isAdmin = req.user.role === "ADMIN";
