@@ -8,3 +8,6 @@ server/prisma/*.db
 server/prisma/*.db-journal
 server/prisma/migrations/dev.db*
 *.log
+
+# Stripe CLI auto-download
+bin/

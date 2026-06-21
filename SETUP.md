@@ -48,12 +48,28 @@ The admin account has the admin panel (products, brands, categories, users,
 orders, transactions). The customer account is for browsing, the cart and
 checkout.
 
-## Card payments (optional)
+## Card payments with Stripe (optional)
 
 The whole app works without payment setup; only the final "Checkout with
-Stripe" button needs it. If you want to test paying by card, see the
-"Stripe payments" section in `README.md`. It is not required to review the
-rest of the shop.
+Stripe" button needs it. If you want to test paying by card too, there is a
+second one-click launcher that handles everything:
+
+1. Ask the project owner for the **Stripe TEST secret key** (it starts with
+   `sk_test_`). It is a test key — no real money is involved. You do **not**
+   need your own Stripe account.
+2. Double-click **`START-WINDOWS-STRIPE.bat`**.
+   - The first time, it asks you to paste that test key (saved locally).
+   - It downloads the Stripe CLI automatically if you don't have it.
+   - It opens the secure webhook tunnel, then starts the app.
+3. In the shop, add a perfume, go to the cart and click **Checkout with
+   Stripe**. Pay with the test card:
+   - Card `4242 4242 4242 4242`, any future expiry, any CVC, any ZIP.
+4. After paying you return to the shop, and the payment shows up under
+   **Admin → Transactions** (the order is marked paid and stock goes down).
+
+Keep that window open while testing; press `Ctrl+C` in it to stop everything.
+No public website or domain is required — the Stripe CLI tunnels webhooks
+straight to your PC.
 
 ## If something goes wrong
 
