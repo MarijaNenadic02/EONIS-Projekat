@@ -21,7 +21,7 @@ export default function Navbar() {
           to="/"
           className="font-serif text-2xl font-semibold tracking-tight"
         >
-          ESSENCE<span className="text-gold">.</span>
+          SCENTIQ<span className="text-gold">.</span>
         </Link>
 
         <div className="flex items-center gap-7">

@@ -45,7 +45,7 @@ async function main() {
   // Users
   await prisma.user.create({
     data: {
-      email: "admin@essence.test",
+      email: "admin@scentiq.test",
       passwordHash: await bcrypt.hash("admin123", 10),
       firstName: "Marko",
       lastName: "Petrovic",
@@ -54,7 +54,7 @@ async function main() {
   });
   await prisma.user.create({
     data: {
-      email: "customer@essence.test",
+      email: "customer@scentiq.test",
       passwordHash: await bcrypt.hash("customer123", 10),
       firstName: "Marija",
       lastName: "Kupac",
@@ -90,8 +90,8 @@ async function main() {
   }
 
   console.log("Seed complete.");
-  console.log("  Admin:    admin@essence.test / admin123");
-  console.log("  Customer: customer@essence.test / customer123");
+  console.log("  Admin:    admin@scentiq.test / admin123");
+  console.log("  Customer: customer@scentiq.test / customer123");
 }
 
 main()

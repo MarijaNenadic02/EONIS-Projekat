@@ -3,7 +3,7 @@ setlocal enableextensions
 cd /d "%~dp0"
 
 echo ==================================================
-echo    Essence - run WITH Stripe test payments
+echo    SCENTIQ - run WITH Stripe test payments
 echo ==================================================
 echo.
 

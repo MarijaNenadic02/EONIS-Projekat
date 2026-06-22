@@ -62,7 +62,7 @@ export default function LoginPage() {
           </Link>
         </p>
         <p className="rounded bg-ink/5 p-2 text-center text-xs text-ink/50">
-          Demo: admin@essence.test / admin123 · customer@essence.test / customer123
+          Demo: admin@scentiq.test / admin123 · customer@scentiq.test / customer123
         </p>
       </form>
     </div>

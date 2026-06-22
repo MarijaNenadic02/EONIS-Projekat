@@ -1,4 +1,4 @@
-# Parfume Shop ("Essence") — Design Specification
+# Parfume Shop ("SCENTIQ") — Design Specification
 
 **Course:** Eksploatacija, održavanje i nadogradnja informacionih sistema 2025/26 (EONIS 2026)
 **Project:** Web prodavnica — Parfumerija
@@ -156,8 +156,8 @@ converts thrown errors (validation, not-found, auth, business-rule) to JSON.
 
 ## 7. Default Accounts (seed)
 
-- Admin: `admin@essence.test` / `admin123`
-- Customer: `customer@essence.test` / `customer123`
+- Admin: `admin@scentiq.test` / `admin123`
+- Customer: `customer@scentiq.test` / `customer123`
 
 ## 8. Out of Scope (this build)
 

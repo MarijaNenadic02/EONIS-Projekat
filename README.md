@@ -1,4 +1,4 @@
-# Essence — Web Parfumerija
+# SCENTIQ: Web Parfumerija
 
 A full-stack web shop for selling luxury perfumes, built for the **EONIS 2026**
 project assignment (Eksploatacija, održavanje i nadogradnja informacionih
@@ -119,8 +119,8 @@ After seeding, you can sign in with:
 
 | Role     | Email                   | Password    |
 |----------|-------------------------|-------------|
-| Admin    | admin@essence.test      | admin123    |
-| Customer | customer@essence.test   | customer123 |
+| Admin    | admin@scentiq.test      | admin123    |
+| Customer | customer@scentiq.test   | customer123 |
 
 ## Stripe payments (test mode)
 
@@ -163,13 +163,13 @@ and records the transaction in the admin panel.
 
 ## How the assignment is covered
 
-- **Zadatak II — Database & business logic.** Code-first data model in
+- **Zadatak II: Database & business logic.** Code-first data model in
   `server/prisma/schema.prisma`: core tables (product, user, admin as a role,
   order) plus associative classes (cart item, order item) and a payment table.
   Business rules (stock limits, stock reduction on payment) are implemented in
   the application code.
-- **Zadatak III — Backend.** Full CRUD per table, exception handling, search,
+- **Zadatak III: Backend.** Full CRUD per table, exception handling, search,
   and two roles (ADMIN / CUSTOMER) with authentication and authorization.
-- **Zadatak IV — Frontend.** React application with validation, login,
+- **Zadatak IV: Frontend.** React application with validation, login,
   pagination, sorting and search, plus Stripe payments whose webhook records
   transactions shown to the administrator.

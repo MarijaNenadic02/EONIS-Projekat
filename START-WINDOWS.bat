@@ -3,7 +3,7 @@ setlocal enableextensions
 cd /d "%~dp0"
 
 echo ==================================================
-echo    Essence - Web Parfumerija : Windows setup
+echo    SCENTIQ - Web Parfumerija : Windows setup
 echo ==================================================
 echo.
 
@@ -54,8 +54,8 @@ if not exist ".env" (
 
 REM ---- 5. Launch ----
 echo [5/5] Starting the app...
-start "Essence Backend"  /D "%~dp0server" cmd /k "npm run dev"
-start "Essence Frontend" /D "%~dp0client" cmd /k "npm run dev"
+start "SCENTIQ Backend"  /D "%~dp0server" cmd /k "npm run dev"
+start "SCENTIQ Frontend" /D "%~dp0client" cmd /k "npm run dev"
 
 echo.
 echo Waiting for the servers to start...
@@ -68,8 +68,8 @@ echo   Done. The shop should open at:
 echo       http://localhost:5173
 echo.
 echo   Sign in with:
-echo     Admin     admin@essence.test    / admin123
-echo     Customer  customer@essence.test / customer123
+echo     Admin     admin@scentiq.test    / admin123
+echo     Customer  customer@scentiq.test / customer123
 echo.
 echo   Two new terminal windows opened (backend + frontend).
 echo   KEEP THEM OPEN while testing. Close them to stop the app.

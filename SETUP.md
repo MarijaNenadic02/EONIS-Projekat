@@ -1,6 +1,6 @@
 # Setup guide (Windows)
 
-This runs the whole Essence shop (backend + frontend) on a Windows PC.
+This runs the whole SCENTIQ shop (backend + frontend) on a Windows PC.
 
 ## 1. Install Node.js (one time)
 
@@ -32,7 +32,7 @@ It will automatically:
 5. Start the backend and the frontend, and open the shop in your browser
 
 The first run takes a few minutes (it downloads dependencies). Two terminal
-windows will open — **keep them open** while you test. Close them to stop the
+windows will open: **keep them open** while you test. Close them to stop the
 app.
 
 The shop opens at **<http://localhost:5173>**.
@@ -41,8 +41,8 @@ The shop opens at **<http://localhost:5173>**.
 
 | Role     | Email                   | Password    |
 |----------|-------------------------|-------------|
-| Admin    | admin@essence.test      | admin123    |
-| Customer | customer@essence.test   | customer123 |
+| Admin    | admin@scentiq.test      | admin123    |
+| Customer | customer@scentiq.test   | customer123 |
 
 The admin account has the admin panel (products, brands, categories, users,
 orders, transactions). The customer account is for browsing, the cart and
@@ -55,7 +55,7 @@ Stripe" button needs it. If you want to test paying by card too, there is a
 second one-click launcher that handles everything:
 
 1. Ask the project owner for the **Stripe TEST secret key** (it starts with
-   `sk_test_`). It is a test key — no real money is involved. You do **not**
+   `sk_test_`). It is a test key: no real money is involved. You do **not**
    need your own Stripe account.
 2. Double-click **`START-WINDOWS-STRIPE.bat`**.
    - The first time, it asks you to paste that test key (saved locally).
@@ -68,18 +68,18 @@ second one-click launcher that handles everything:
    **Admin → Transactions** (the order is marked paid and stock goes down).
 
 Keep that window open while testing; press `Ctrl+C` in it to stop everything.
-No public website or domain is required — the Stripe CLI tunnels webhooks
+No public website or domain is required: the Stripe CLI tunnels webhooks
 straight to your PC.
 
 ## If something goes wrong
 
-- **"Node.js is not installed"** — install it from <https://nodejs.org/> and
+- **"Node.js is not installed"**: install it from <https://nodejs.org/> and
   run the file again.
-- **A step failed** — make sure you have an internet connection (it downloads
+- **A step failed**: make sure you have an internet connection (it downloads
   packages), then run `START-WINDOWS.bat` again.
-- **Port already in use** — close any other terminal windows running the app,
+- **Port already in use**: close any other terminal windows running the app,
   or restart the PC, then try again.
-- **Want a clean database again** — open the `server` folder in a terminal and
+- **Want a clean database again**: open the `server` folder in a terminal and
   run `npm run seed`.
 
 ## Manual steps (if you prefer not to use the script)

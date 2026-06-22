@@ -1,5 +1,5 @@
 {
-  "name": "essence-server",
+  "name": "scentiq-server",
   "version": "1.0.0",
   "description": "Parfume shop backend API (EONIS 2026)",
   "type": "module",

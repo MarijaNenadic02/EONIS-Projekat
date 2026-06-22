@@ -74,7 +74,7 @@ export default function CatalogPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
         <div className="relative px-8 py-20 sm:px-14 sm:py-28">
-          <p className="eyebrow mb-4 animate-fade-in">Maison Essence</p>
+          <p className="eyebrow mb-4 animate-fade-in">Maison SCENTIQ</p>
           <h1 className="max-w-2xl text-balance text-5xl font-medium leading-[1.05] text-cream animate-fade-up sm:text-6xl">
             Discover your signature scent
           </h1>

@@ -51,5 +51,5 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Essence API running on http://localhost:${PORT}`);
+  console.log(`SCENTIQ API running on http://localhost:${PORT}`);
 });

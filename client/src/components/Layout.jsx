@@ -11,7 +11,7 @@ export default function Layout() {
       <footer className="mt-10 border-t border-ink/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-ink-muted sm:flex-row sm:px-6">
           <span className="font-serif text-lg tracking-tight text-ink">
-            Essence<span className="text-gold">.</span>
+            SCENTIQ<span className="text-gold">.</span>
           </span>
           <span>Curated luxury fragrances · EONIS 2026</span>
           <div className="flex gap-5">
